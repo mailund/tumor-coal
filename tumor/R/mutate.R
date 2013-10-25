@@ -12,7 +12,6 @@
 mutate <- function(tree, theta) {
   # Place mutations on the tree based on mutation rate theta and edge lengths.
   lambdas <- tree$edge.length * theta
-  no.muts <- rpois(length(tree$edge.length), lambdas)
-  tree$no.muts <- no.muts
+  tree$no.muts <- rpois(length(tree$edge.length), lambdas)
   tree
 }
