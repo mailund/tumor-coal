@@ -6,6 +6,9 @@ birth.times <- function(n, delta, gamma) {
   -1.0/delta * log( Us / (gamma + (1-gamma) * Us) )
 }
 
+#' Simulate a tumor tree.
+#' 
+#' @export
 rtumortree <- function(n, delta, gamma) {
   # Get time points from the birht/death process
   ts <- birth.times(n, delta, gamma)
@@ -22,6 +25,9 @@ rtumortree <- function(n, delta, gamma) {
   tree
 }
 
+#' Place mutations on a tumor tree.
+#' 
+#' @export
 mutate <- function(tree, theta) {
   # Place mutations on the tree based on mutation rate theta and edge lengths.
   lambdas <- tree$edge.length * theta
@@ -44,6 +50,14 @@ plot.tumortree.mutations <- function(tree) {
   }
 }
 
+#' Plot a tumor tree
+#' 
+#' Plots the tree (using \code{ape} plotting) including mutations if the tree includes those.
+#' 
+#' @param tree The tree to plot
+#' @param ...  Options passed to \code{plot.phylo}
+#' 
+#' @export
 plot.tumortree <- function(tree, ...) {
   plot.phylo(tree, ...)
   if (!is.null(tree$no.muts)) {
@@ -52,11 +66,5 @@ plot.tumortree <- function(tree, ...) {
   axisPhylo()
 }
 
-opar <- par(mfrow=c(2,2))
-tree <- rtumortree(15, 1, 1)
-plot(tree)
-plot(mutate(tree, 0.01))
-plot(mutate(tree, 0.05))
-plot(mutate(tree, 0.1))
-par(opar)
+
 
