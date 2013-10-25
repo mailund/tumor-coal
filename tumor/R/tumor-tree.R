@@ -1,40 +1,6 @@
 
-library(ape)
+# This file contains polymorphic code for the class "tumortree".
 
-birth.times <- function(n, delta, gamma) {
-  Us <- sort(runif(n))
-  -1.0/delta * log( Us / (gamma + (1-gamma) * Us) )
-}
-
-#' Simulate a tumor tree.
-#' 
-#' @export
-rtumortree <- function(n, delta, gamma) {
-  # Get time points from the birht/death process
-  ts <- birth.times(n, delta, gamma)
-  
-  # Coalescence times are the birth times from t2 and down to tn
-  coal.times <- ts[-1]
-  
-  # Simulate a coalescence tree with those times
-  tree <- rcoal(n, br = coal.times)
-  tree$ts <- ts
-  
-  # Define as a sub-class of "phylo" and return the new object
-  class(tree) <- c('tumortree', 'phylo')
-  tree
-}
-
-#' Place mutations on a tumor tree.
-#' 
-#' @export
-mutate <- function(tree, theta) {
-  # Place mutations on the tree based on mutation rate theta and edge lengths.
-  lambdas <- tree$edge.length * theta
-  no.muts <- rpois(length(tree$edge.length), lambdas)
-  tree$no.muts <- no.muts
-  tree
-}
 
 # Helper function for adding mutations to a plot of a tree
 plot.tumortree.mutations <- function(tree) {
