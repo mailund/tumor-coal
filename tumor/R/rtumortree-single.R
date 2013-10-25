@@ -3,7 +3,7 @@
 #' 
 #' Simulate coalescence times for a tumor based on a birth/death process
 #' with birth rate lambda and death rate mu. The simulation uses
-#' scaled parameters delta = lambda - mu and gamma (lambda-mu)/(lambda*rho)
+#' scaled parameters delta = lambda - mu and gamma = (lambda-mu)/(lambda*rho)
 #' where rho is the fraction of tumor cells sequenced.
 #' 
 #' See Wiuf's note for details.
