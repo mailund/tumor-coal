@@ -22,6 +22,7 @@ rtumortree.single <- function(n, delta, gamma) {
   
   # Simulate a coalescence tree with those times
   tree <- rcoal(n, br = coal.times)
+  tree$root.edge <- ts[1] - ts[2] # t1 on the root edge, so the root edge has length t1 - t2
   tree$ts <- ts
   
   # Define as a sub-class of "phylo" and return the new object
