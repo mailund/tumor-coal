@@ -15,21 +15,22 @@ double twoTumors_CaseB_TA(int n1, int n2, double delta,
     }
     
     // M -- see Wiuf's note.
-    double M = (x*pow(1-x, n1-1))/pow(1-(1-gamma2)*x, n1+1);
+    double M = (x*pow(1-x, n1-1))/pow(1-(1-gamma1)*x, n1+1);
     
     // Rejection sampling following Wiuf's note.
     for (;;) {
         double t = 0.0;
+        double s = 0.0;
         for (;;) {
             double U = runif(1, 0.0, 1.0)[0];
             double X = 1/pow(U, 1.0/float(n2)) - 1;
-            t = 1/delta * log(1 + gamma2/X);
-            double s = delta*(t - tau);
+            t = log(1 + gamma2/X) / delta;
+            s = delta*(t - tau);
             if (s >= 0) break;
         }
         double accept = runif(1, 0.0, 1.0)[0];
-        double accept_prob_nom = (1.0/M) * exp(-t)*pow(1-exp(-t), n1-1);
-        double accept_prob_denom = pow(1-(1-gamma1)*exp(-t), n1+1);
+        double accept_prob_nom = (1.0/M) * exp(-s)*pow(1-exp(-s), n1-1);
+        double accept_prob_denom = pow(1-(1-gamma1)*exp(-s), n1+1);
         double accept_prob = accept_prob_nom / accept_prob_denom;
         if (accept <= accept_prob)
             return t;
