@@ -25,7 +25,7 @@ plot.tumortree.mutations <- function(tree) {
 #' 
 #' @export
 plot.tumortree <- function(tree, ...) {
-  plot.phylo(tree, ...)
+  plot.phylo(tree, root.edge=TRUE, ...)
   if (!is.null(tree$no.muts)) {
     plot.tumortree.mutations(tree)
   }
