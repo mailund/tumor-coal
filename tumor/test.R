@@ -8,3 +8,7 @@ plot(mutate(tree, 0.01))
 plot(mutate(tree, 0.05))
 plot(mutate(tree, 0.1))
 par(opar)
+
+
+tree <- rtumortree.two(2,3, 1, 1, 1, 2)
+plot(mutate(tree, 0.1))

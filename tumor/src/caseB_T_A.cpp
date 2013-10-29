@@ -3,7 +3,8 @@
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-double twoTumors_CaseB_TA(int n1, int n2, double delta, double gamma1, double gamma2, double tau) {
+double twoTumors_CaseB_TA(int n1, int n2, double delta, 
+                          double gamma1, double gamma2, double tau) {
     
     // Get x (see Wiuf's note)
     double x = 0.0;
