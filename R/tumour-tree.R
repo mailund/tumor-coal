@@ -30,7 +30,7 @@ plot.tumourtree <- function(tree, ...) {
     plot.tumourtree.mutations(tree)
   }
   axisPhylo()
-  plt
+  invisible(plt)
 }
 
 #' Plot a tumor tree
@@ -47,7 +47,7 @@ plot.tumourtree.two.B <- function(tree, ...) {
   mtext(expression(t[A]), at=0, col='blue')
   abline(v=tree$TA - tree$tau, col='blue', lty='dashed')
   mtext(expression(tau), at=tree$TA - tree$tau, col='blue')
-  plt
+  invisible(plt)
 }
 
 
