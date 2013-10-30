@@ -25,7 +25,7 @@ rtumortree.two <- function(n1, n2, delta, gamma1, gamma2, tau) {
     return (NA)
 
   # Get time points from the birth/death process in tumour 1
-  t1s <- coaltimes.single.conditional(n1, delta, gamma1, TA)
+  t1s <- coaltimes.single.conditional(n1, delta, gamma1, TA - tau) # FIXME?
   # and then do the same for tumour 2
   t2s <- coaltimes.single.conditional(n2, delta, gamma2, TA)
   
