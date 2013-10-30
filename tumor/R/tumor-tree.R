@@ -25,12 +25,29 @@ plot.tumortree.mutations <- function(tree) {
 #' 
 #' @export
 plot.tumortree <- function(tree, ...) {
-  plot.phylo(tree, ...)
+  plt <- plot.phylo(tree, ...)
   if (!is.null(tree$no.muts)) {
     plot.tumortree.mutations(tree)
   }
   axisPhylo()
+  plt
 }
 
+#' Plot a tumor tree
+#' 
+#' Plots the tree (using \code{ape} plotting) including mutations if the tree includes those.
+#' 
+#' @param tree The tree to plot
+#' @param ...  Options passed to \code{plot.phylo}
+#' 
+#' @export
+plot.tumortree.two.B <- function(tree, ...) {
+  plt <- plot.tumortree(tree, ...)
+  abline(v=0, col='blue', lty='dashed')
+  mtext(expression(t[A]), at=0, col='blue')
+  abline(v=tree$TA - tau, col='blue', lty='dashed')
+  mtext(expression(tau), at=tree$TA - tau, col='blue')
+  plt
+}
 
 

@@ -1,10 +1,8 @@
 
-library(ape)
 
-opar <- par(mfrow=c(2,2))
-tree <- rtumortree.single(15, 1, 1)
+tree <- rtumortree.two(3, 3, 1, 1, 1, 1.2)
+opar <- par(mfrow=c(2,1))
 plot(tree)
-plot(mutate(tree, 0.01))
-plot(mutate(tree, 0.05))
-plot(mutate(tree, 0.1))
+plot(mutate(tree, 1))
 par(opar)
+
