@@ -18,7 +18,7 @@ rtumortree.single <- function(n, delta, gamma) {
   ts <- coaltimes.single(n, delta, gamma)
   
   # Coalescence times are the birth times from t2 and down to tn
-  coal.times <- ts[-1]
+  coal.times <- coaltimes.differences(rev(ts[-1]))
   
   # Simulate a coalescence tree with those times
   tree <- rcoal(n, br = coal.times)

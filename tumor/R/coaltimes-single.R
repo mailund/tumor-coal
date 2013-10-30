@@ -19,7 +19,7 @@
 #' @export
 coaltimes.single <- function(n, delta, gamma) {
   Us <- sort(runif(n))
-  -1.0/delta * log( Us / (gamma + (1-gamma) * Us) )
+  -log( Us / (gamma + (1-gamma) * Us) ) / delta
 }
 
 
@@ -42,6 +42,18 @@ coaltimes.single.conditional <- function(n, delta, gamma, t1) {
   x1 <- gamma*exp(-delta*t1) / (1 - exp(-delta*t1))
   Us <- rev(sort(runif(n-1)))
   Zs <- Us / (1 + x1)
-  Ts <- log( (1-Zs) / (1 - (1-gamma)*Zs)) / delta
-  Ts
+  - log( (1-Zs) / (1 - (1-gamma)*Zs)) / delta
+}
+
+#' Takes coalescence times \code{t[1],t[2],t[3],...,t[n]} and changes them into
+#' delta times \code{t[1],t[2]-t[1], t[3]-t[2],...,t[n]-t[n-1]}
+#' 
+#' This transformation is necessary when simulating with \code{rcoal} that wants
+#' the differences in times rather than the absolute coalescence times.
+#' 
+#' @param ts   The coalescence times.
+#' 
+#' @export
+coaltimes.differences <- function(ts) {
+  ts - c(0, ts[-length(ts)])
 }
