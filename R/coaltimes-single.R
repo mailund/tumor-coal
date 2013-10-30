@@ -1,5 +1,5 @@
 
-#' Simulate the coalescence times for a single tumor.
+#' Simulate the coalescence times for a single tumour.
 #' 
 #' Simulate coalescence times for a tumor based on a birth/death process
 #' with birth rate lambda and death rate mu. The simulation uses

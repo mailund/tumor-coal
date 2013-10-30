@@ -1,2 +1,2 @@
-useDynLib(tumor)
+useDynLib(tumour)
 exportPattern("^[[:alpha:]]+")

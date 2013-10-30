@@ -1,5 +1,5 @@
 
-#' Simulate a tumor tree for a single tumor.
+#' Simulate a tumour tree for a single tumor.
 #' 
 #' Simulate a coalescence tree for case A in Wiuf's note. This is the genealogy
 #' of a single tumor where \code{n} cells were sampled.
@@ -13,7 +13,7 @@
 #' @param gamma  Parameter for the birth/death process.
 #' 
 #' @export
-rtumortree.single <- function(n, delta, gamma) {
+rtumourtree.single <- function(n, delta, gamma) {
   # Get time points from the birht/death process
   ts <- coaltimes.single(n, delta, gamma)
   
@@ -26,7 +26,7 @@ rtumortree.single <- function(n, delta, gamma) {
   tree$ts <- ts
   
   # Define as a sub-class of "phylo" and return the new object
-  class(tree) <- c('tumortree.single', 'tumortree', 'phylo')
+  class(tree) <- c('tumourtree.single', 'tumourtree', 'phylo')
   tree
 }
 

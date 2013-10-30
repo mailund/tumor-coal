@@ -3,10 +3,10 @@
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-double twoTumors_CaseB_TA(int n1, int n2, double delta, 
-                          double gamma1, double gamma2, 
-                          double tau,
-                          int max_samples = 10) 
+double twoTumours_CaseB_TA(int n1, int n2, double delta, 
+                           double gamma1, double gamma2, 
+                           double tau,
+                           int max_samples = 10) 
 {
     int samples = 0;
     
@@ -48,10 +48,10 @@ double twoTumors_CaseB_TA(int n1, int n2, double delta,
 }
 
 // [[Rcpp::export]]
-double twoTumors_CaseB_TA_alt(int n1, int n2, double delta, 
-                              double gamma1, double gamma2, 
-                              double tau,
-                              int max_samples = 10)
+double twoTumours_CaseB_TA_alt(int n1, int n2, double delta, 
+                               double gamma1, double gamma2, 
+                               double tau,
+                               int max_samples = 10)
 {
     int samples = 0;
     
@@ -88,18 +88,18 @@ double twoTumors_CaseB_TA_alt(int n1, int n2, double delta,
 
 
 // [[Rcpp::export]]
-double twoTumors_CaseB_TA_hybrid(int n1, int n2, double delta, 
-                          double gamma1, double gamma2, 
-                          double tau,
-                          int max_samples = 10) 
+double twoTumours_CaseB_TA_hybrid(int n1, int n2, double delta, 
+                                  double gamma1, double gamma2, 
+                                  double tau,
+                                  int max_samples = 10) 
 {
     double t = NA_REAL;
     int samples = 0;
     for (int i = 0; i < max_samples; ++i) {
         if (i % 2 == 0) {
-          t = twoTumors_CaseB_TA(n1, n2, delta, gamma1, gamma2, tau, 1);
+          t = twoTumours_CaseB_TA(n1, n2, delta, gamma1, gamma2, tau, 1);
         } else {
-          t = twoTumors_CaseB_TA_alt(n1, n2, delta, gamma1, gamma2, tau, 1);
+          t = twoTumours_CaseB_TA_alt(n1, n2, delta, gamma1, gamma2, tau, 1);
         }
         if (! R_IsNA(t))
           return t;

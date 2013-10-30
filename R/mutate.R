@@ -1,5 +1,5 @@
 
-#' Place mutations on a tumor tree.
+#' Place mutations on a tumour tree.
 #' 
 #' Mutations are placed on the branches of the tree by a Poison process, so each branch of length \code{L}
 #' gets a number of mutations drawn as \code{prois(L*theta)} where \code{theta} is the (scaled)

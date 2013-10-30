@@ -1,9 +1,9 @@
 
-# This file contains polymorphic code for the class "tumortree".
+# This file contains polymorphic code for the class "tumourtree".
 
 
 # Helper function for adding mutations to a plot of a tree
-plot.tumortree.mutations <- function(tree) {
+plot.tumourtree.mutations <- function(tree) {
   for (edge in 1:length(tree$no.muts)) {
     k <- tree$no.muts[edge]
     if (k > 0) {
@@ -16,7 +16,7 @@ plot.tumortree.mutations <- function(tree) {
   }
 }
 
-#' Plot a tumor tree
+#' Plot a tumour tree
 #' 
 #' Plots the tree (using \code{ape} plotting) including mutations if the tree includes those.
 #' 
@@ -24,10 +24,10 @@ plot.tumortree.mutations <- function(tree) {
 #' @param ...  Options passed to \code{plot.phylo}
 #' 
 #' @export
-plot.tumortree <- function(tree, ...) {
+plot.tumourtree <- function(tree, ...) {
   plt <- plot.phylo(tree, ...)
   if (!is.null(tree$no.muts)) {
-    plot.tumortree.mutations(tree)
+    plot.tumourtree.mutations(tree)
   }
   axisPhylo()
   plt
@@ -41,12 +41,12 @@ plot.tumortree <- function(tree, ...) {
 #' @param ...  Options passed to \code{plot.phylo}
 #' 
 #' @export
-plot.tumortree.two.B <- function(tree, ...) {
-  plt <- plot.tumortree(tree, ...)
+plot.tumourtree.two.B <- function(tree, ...) {
+  plt <- plot.tumourtree(tree, ...)
   abline(v=0, col='blue', lty='dashed')
   mtext(expression(t[A]), at=0, col='blue')
-  abline(v=tree$TA - tau, col='blue', lty='dashed')
-  mtext(expression(tau), at=tree$TA - tau, col='blue')
+  abline(v=tree$TA - tree$tau, col='blue', lty='dashed')
+  mtext(expression(tau), at=tree$TA - tree$tau, col='blue')
   plt
 }
 

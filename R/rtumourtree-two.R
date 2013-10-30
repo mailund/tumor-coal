@@ -17,10 +17,10 @@
 #' @param tau     Offset in time of the sampling of the two tumours.
 #' 
 #' @export
-rtumortree.two <- function(n1, n2, delta, gamma1, gamma2, tau) {
+rtumourtree.two <- function(n1, n2, delta, gamma1, gamma2, tau) {
   # Get the split time between the two tumours
-  TA <- twoTumors_CaseB_TA_hybrid(n1, n2, delta, 
-                                  gamma1, gamma2, tau, 1000)
+  TA <- twoTumours_CaseB_TA_hybrid(n1, n2, delta, 
+                                   gamma1, gamma2, tau, 1000)
   if (is.na(TA))
     return (NA)
 
@@ -45,10 +45,11 @@ rtumortree.two <- function(n1, n2, delta, gamma1, gamma2, tau) {
   tree$n1 <- n1
   tree$n2 <- n2
   tree$TA <- TA
+  tree$tau <- tau
   tree$t1s <- t1s
   tree$t2s <- t2s
   
   # Define as a sub-class of "phylo" and return the new object
-  class(tree) <- c('tumortree.two.B', 'tumortree', 'phylo')
+  class(tree) <- c('tumourtree.two.B', 'tumourtree', 'phylo')
   tree
 }
