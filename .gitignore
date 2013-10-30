@@ -1,3 +1,11 @@
 .Rproj.user
 .Rhistory
 .RData
+
+tumor/R/RcppExports.R
+
+tumor/R/RcppExports.R
+
+tumor/src/RcppExports.cpp
+
+tumor/src/caseB_T_A.o
