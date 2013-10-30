@@ -8,7 +8,7 @@ plot.tumortree.mutations <- function(tree) {
     k <- tree$no.muts[edge]
     if (k > 0) {
       l <- tree$edge.length[edge]
-      adjs <- runif(k, min=-l/5.0, max=l/2.0) # range based on eyeballed aestetics
+      adjs <- runif(k, min=1/2 - l/2, max=1/2 + l/2)
       for (i in 1:k) {
         edgelabels('', frame='none', col='black', bg='red', pch=21, edge=edge, adj=adjs[i])
       }
