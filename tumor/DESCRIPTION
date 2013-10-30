@@ -1,11 +1,11 @@
-Package: tumor
+Package: tumour
 Type: Package
-Title: Simulation of tumor coalescence trees
+Title: Simulation of tumour coalescence trees
 Version: 1.0
 Date: 2013-10-25
 Author: Thomas Mailund, Carsten Wiuf
 Maintainer: Thomas Mailund <mailund@birc.au.dk>
-Description: Simulation of coalescence trees with coalescence times from a tumor model.
-License: GLPv2
+Description: Simulation of coalescence trees with coalescence times from a tumour model.
+License: GPLv2
 Depends: Rcpp (>= 0.10.3), ape
 LinkingTo: Rcpp
