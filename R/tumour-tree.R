@@ -73,11 +73,26 @@ plot.tumourtree.single <- function(tree, ...) {
 #' 
 #' @export
 plot.tumourtree.two.B <- function(tree, ...) {
+  
+  rightmost <- max(node.depth.edgelength(tree))
+  rescale <- function(x) -(x - rightmost)
+  
   plt <- plot.tumourtree(tree, ...)
   abline(v=0, col='blue', lty='dashed')
-  mtext(expression(t[A]), at=0, col='blue')
-  abline(v=tree$TA - tree$tau, col='blue', lty='dashed')
-  mtext(expression(tau), at=tree$TA - tree$tau, col='blue')
+  mtext(expression(t[A]), line=1, at=0, col='black')
+  
+  abline(v=rescale(tree$tau), col='black', lty='dashed')
+  mtext(expression(tau), line=1, at=rescale(tree$tau), col='black')
+  
+  for (i in 2:tree$n1) {
+    abline(v = rescale(tree$t1s[i]), col='blue', lty='dotted')
+    mtext(substitute(t[i], list(i=i)), at = rescale(tree$t1s[i]), col='blue')  
+  }
+  for (i in 2:tree$n2) {
+    abline(v = rescale(tree$t2s[i]), col='darkgreen', lty='dotted')
+    mtext(substitute(s[i], list(i=i)), at = rescale(tree$t2s[i]), col='darkgreen')  
+  }
+  
   invisible(plt)
 }
 
