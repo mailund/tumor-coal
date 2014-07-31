@@ -25,7 +25,7 @@ plot.tumourtree.mutations <- function(tree) {
 #' 
 #' @export
 plot.tumourtree <- function(tree, ...) {
-  plt <- plot.phylo(tree, ...)
+  plt <- plot.phylo(tree, show.tip.label=FALSE, ...)
   if (!is.null(tree$no.muts)) {
     plot.tumourtree.mutations(tree)
   }
@@ -78,11 +78,14 @@ plot.tumourtree.two.B <- function(tree, ...) {
   rescale <- function(x) -(x - rightmost)
   
   plt <- plot.tumourtree(tree, ...)
-  abline(v=0, col='blue', lty='dashed')
+  
+  abline(v=0, col='black', lty='dashed')
   mtext(expression(t[A]), line=1, at=0, col='black')
   
   abline(v=rescale(tree$tau), col='black', lty='dashed')
   mtext(expression(tau), line=1, at=rescale(tree$tau), col='black')
+  abline(v=rightmost, col='black', lty='dashed')
+  mtext(0, line=1, at=rightmost, col='black')
   
   for (i in 2:tree$n1) {
     abline(v = rescale(tree$t1s[i]), col='blue', lty='dotted')
