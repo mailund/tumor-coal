@@ -18,11 +18,6 @@
 #' 
 #' @export
 rtumourtree.two <- function(n1, n2, delta, gamma1, gamma2, tau) {
-  # Get the split time between the two tumours
-  TA <- twoTumours_CaseB_TA_hybrid(n1, n2, delta, 
-                                   gamma1, gamma2, tau, 1000)
-  if (is.na(TA))
-    return (NA)
 
   # Get time points from the birth/death process in tumour 1
   t1s <- coaltimes.single(n1, delta, gamma1) + tau
@@ -32,13 +27,13 @@ rtumourtree.two <- function(n1, n2, delta, gamma1, gamma2, tau) {
   # Simulate two coalescence trees as single tumours, with the respective coal times.
   tree1 <- rcoal(n1, br = coaltimes.differences(rev(t1s - tau)))
   tree2 <- rcoal(n2, br = coaltimes.differences(rev(t2s)))
-    
-  # Adjust the root edge time to TA
-  #tree1$root.edge <- TA - branching.times(tree1)[1] - tau # FIXME?
-  #tree2$root.edge <- TA - branching.times(tree2)[1]
   
-  tree1$root.edge <- 10 - branching.times(tree1)[1] - tau
-  tree2$root.edge <- 10 - branching.times(tree2)[1]
+  # Sample their common ancestor TA ... FIXME This is not implemented yet
+  TA <- 10
+  
+  # Adjust the root edge time to TA
+  tree1$root.edge <- TA - branching.times(tree1)[1] - tau
+  tree2$root.edge <- TA - branching.times(tree2)[1]
   
   # Merge the two trees
   tree <- tree1 + tree2
