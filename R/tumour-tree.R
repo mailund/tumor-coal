@@ -41,6 +41,37 @@ plot.tumourtree <- function(tree, ...) {
 #' @param ...  Options passed to \code{plot.phylo}
 #' 
 #' @export
+plot.tumourtree.single <- function(tree, ...) {
+  plt <- plot.tumourtree(tree, root.edge=TRUE, ...)
+  abline(v=0, col='black', lty='dashed')
+  
+  n <- length(tree$ts)
+  scaled_times <- -(tree$ts - tree$ts[1]) # The ape package does weird stuff with the x-axis
+  
+  abline(v = scaled_times[1], col='red', lty='dashed')
+  mtext(substitute(t[i], list(i=1)), at = scaled_times[1], col='red')
+  mtext("Cancer\norigin", line=2, at = scaled_times[1], col='red')
+  
+  abline(v = scaled_times[2], col='black', lty='dashed')
+  mtext(substitute(t[i], list(i=2)), at = scaled_times[2], col='black')
+  mtext("MRCA", line=2, at = scaled_times[2], col='black')
+  
+  for (i in 3:n) {
+    abline(v = scaled_times[i], col='blue', lty='dashed')
+    mtext(substitute(t[i], list(i=i)), at = scaled_times[i], col='blue')  
+  }
+  
+  invisible(plt)
+}
+
+#' Plot a tumor tree
+#' 
+#' Plots the tree (using \code{ape} plotting) including mutations if the tree includes those.
+#' 
+#' @param tree The tree to plot
+#' @param ...  Options passed to \code{plot.phylo}
+#' 
+#' @export
 plot.tumourtree.two.B <- function(tree, ...) {
   plt <- plot.tumourtree(tree, ...)
   abline(v=0, col='blue', lty='dashed')

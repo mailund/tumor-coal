@@ -12,7 +12,7 @@ Simulation of coalescence trees with coalescence times from a tumour model.
 \tabular{ll}{
 Package: \tab tumour\cr
 Type: \tab Package\cr
-Version: \tab 0.1.0\cr
+Version: \tab 0.1.2\cr
 Date: \tab 2013-10-30\cr
 License: \tab GPLv2\cr
 }
