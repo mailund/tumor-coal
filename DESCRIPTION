@@ -1,7 +1,7 @@
 Package: tumour
 Type: Package
 Title: Simulation of tumour coalescence trees
-Version: 1.0
+Version: 0.1.2
 Date: 2013-10-25
 Author: Thomas Mailund, Carsten Wiuf
 Maintainer: Thomas Mailund <mailund@birc.au.dk>
